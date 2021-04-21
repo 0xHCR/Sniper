@@ -55,7 +55,7 @@ factory.on('PairCreated', async (token0, token1, pairAddress) => {
   console.log(`
     Buying new token
     ================
-    tokenIn: ${amountIn.toString()} ${tokenIn} (WETH)
+    tokenIn: ${amountIn.toString()} ${tokenIn} (${process.env.TOKEN_TICKER})
     tokenOut: ${amountOutMin.toString()} ${tokenOut}
   `)
   const tx = await router.swapExactTokensForTokens(
@@ -63,7 +63,7 @@ factory.on('PairCreated', async (token0, token1, pairAddress) => {
     amountOutMin,
     [tokenIn, tokenOut],
     process.env.ADDRESSES.recipient,
-    Date.now() + 1000 * 60 * 10
+    Date.now() + 1000 * 60 * 10 // 10 minute max tx timeout
   )
   const receipt = await tx.wait()
   console.log(`tx receipt\n${receipt}`)
