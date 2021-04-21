@@ -32,12 +32,12 @@ factory.on('PairCreated', async (token0, token1, pairAddress) => {
 
   //The token used to pay needs to be WETH
   let tokenIn, tokenOut
-  if(token0 === process.env.ADDRESSES.WETH) {
+  if(token0 === process.env.ADDRESSES.TOKEN) {
     tokenIn = token0
     tokenOut = token1
   }
 
-  if(token1 === process.env.ADDRESSES.WETH) {
+  if(token1 === process.env.ADDRESSES.TOKEN) {
     tokenIn = token1
     tokenOut = token0
   }
